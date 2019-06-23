@@ -135,21 +135,7 @@ class DB
 		$this->query($sql);
 		return $this->execute();
 	}
-	public function resultset(){  
-		$this->execute();  
-		return $this->stmt->fetchAll(PDO::FETCH_ASSOC);  
-	}
-	public function single(){  
-		$this->execute();  
-		return $this->stmt->fetch(PDO::FETCH_ASSOC);  
-	}   
-	public function rowCount(){  
-		return $this->stmt->rowCount();  
-	}
-	public function lastInsertId(){  
-		return $this->dbh->lastInsertId();  
-	}
-	
+
 	public function from($tables)
 	{
 		if(is_string($tables))
@@ -249,5 +235,20 @@ class DB
 		$sql = $this->buildQuery($this->_query);
 		$this->query($sql);
 		return $this;
+	}	
+	
+	public function resultset(){  
+		$this->execute();  
+		return $this->stmt->fetchAll(PDO::FETCH_ASSOC);  
+	}
+	public function single(){  
+		$this->execute();  
+		return $this->stmt->fetch(PDO::FETCH_ASSOC);  
+	}   
+	public function rowCount(){  
+		return $this->stmt->rowCount();  
+	}
+	public function lastInsertId(){  
+		return $this->dbh->lastInsertId();  
 	}	
 }
